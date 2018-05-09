@@ -1,0 +1,132 @@
+h3 {
+  font-family: "Verdana";
+  margin: auto;
+  text-decoration: underline;
+  text-align: center;
+
+}
+@media(min-width: 550px){
+    .boxBorderOfList{
+        margin-top:10px;
+        padding:5px;
+        border-style:solid;
+        border-width:1.5px;
+        width:500px;
+    }
+    .myContainer
+        {
+             margin: 0 auto;
+             width: 500px;
+        }
+
+    #txbNewToDo{
+        width:380px;
+    }
+
+    #btnAddToDo{
+    	background-color: green;
+    	color: white;
+    	cursor: pointer;
+        padding:4px 16px 4px 16px;
+      	border-radius:4px;
+      	transition:0.2s;
+        margin:5px;
+        border: none;
+        margin-left: 35px;
+    }
+}
+@media(max-width: 550px){
+.boxBorderOfList{
+        margin-top:10px;
+        padding:5px;
+        border-style:solid;
+        border-width:1.5px;
+        width:auto;
+    }
+    .myContainer
+        {
+             margin: 0 5px;
+             width: auto;
+        }
+
+        #txbNewToDo{
+            width:60%;
+        }
+
+        #btnAddToDo{
+            background-color: green;
+            color: white;
+            cursor: pointer;
+            padding:4px 16px 4px 16px;
+            border-radius:4px;
+            transition:0.2s;
+            margin:5px;
+            border: none;
+
+        }
+}
+
+
+
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li{
+	  font-size: 16px;
+}
+
+.btnEditTask, .btnDeleteTask, .separator {
+	color: #4286f4;
+	background: transparent;
+	font-size: 12;
+	border:none;
+	float: right;
+}
+
+.btnEditTask:hover, .btnDeleteTask:hover {
+	text-decoration: underline;
+	cursor: pointer;
+	}
+
+	/* custom checkbox */
+    .btncontainer {
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #a9a9a9;
+      border: none;
+      cursor: pointer;
+      float: left;
+    }
+
+    .containerAfterClick{
+    	background-image: url(check.png);
+
+    	top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: none;
+        cursor: pointer;
+        float: left;
+
+    }
+
+    li span{
+        font-size: 18px;
+        padding-left: 2px;
+    }
+
+    .containerAfterClick + span {
+        text-decoration: line-through;
+    }
+    .listText:hover{
+        cursor: pointer;
+    }
+    .noPointer:hover{
+        cursor: auto;
+    }
+
