@@ -5,7 +5,7 @@ var list = document.getElementById("ToDoListTasks");
 Calls addToList to update the tasks displayed.*/
 function updateList(){
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "tasks");
+    xhr.open("GET", "tasks/");
     /*Preparing request body */
     xhr.addEventListener("load", addToList)
     xhr.send();
@@ -53,8 +53,7 @@ while (list.firstChild) {
             check.addEventListener("click", function(){
                 var xhr = new XMLHttpRequest();
                 var id = this.parentElement.id;
-                var URL = "completeTask/" + id;
-                console.log(URL);
+                var URL = "tasks/complete/" + id;
                     xhr.open("PUT", URL);
                     /*Preparing request body */
                     xhr.addEventListener("load", updateList)
@@ -71,8 +70,7 @@ while (list.firstChild) {
 
                 var xhr = new XMLHttpRequest();
                 var id = this.parentElement.id;
-                var URL = "completeTask/" + id;
-                console.log(URL);
+                var URL = "tasks/complete/" + id;
                     xhr.open("PUT", URL);
                     /*Preparing request body */
                     xhr.addEventListener("load", updateList)
@@ -85,7 +83,6 @@ while (list.firstChild) {
         listItem.appendChild(textBox);
         //listItem.innerHTML = dataArray[i]['description'];
         //listItem.class = "listInnerText";
-        console.log(dataArray[i]['id']);
 
         listItem.id = dataArray[i]['id'];
     /*Create a button to delete a task*/
@@ -100,7 +97,7 @@ while (list.firstChild) {
     /*Get id of list item and append into URL for request*/
             var id = this.parentElement.id;
             var xhr = new XMLHttpRequest();
-            var URL = "deleteTask/" + id;
+            var URL = "tasks/" + id;
                 xhr.open("DELETE", URL);
                 /*Preparing request body */
                 xhr.addEventListener("load", updateList);
@@ -136,7 +133,6 @@ while (list.firstChild) {
                     window.setTimeout(function () {
                        ch.focus();
                     }, 0);
-                    console.log(ch);
 
                     ch.addEventListener("keyup", function(event) {
         /*Stop editing after enter is pressed*/
@@ -154,7 +150,7 @@ while (list.firstChild) {
                     var xhr = new XMLHttpRequest();
 
 
-                    var URL = "updateTask/" + id;
+                    var URL = "tasks/" + id;
                         xhr.open("PUT", URL);
                         /*Preparing request body */
                         xhr.addEventListener("load", updateList);
@@ -181,7 +177,7 @@ while (list.firstChild) {
                     var xhr = new XMLHttpRequest();
 
 
-                    var URL = "updateTask/" + id;
+                    var URL = "tasks/" + id;
                         xhr.open("PUT", URL);
                         /*Preparing request body */
                         xhr.addEventListener("load", updateList);
@@ -209,7 +205,7 @@ addBtn.addEventListener("click", function(){
 
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "createTask");
+        xhr.open("POST", "tasks/");
         /*Preparing request body */
         var txt = document.getElementById('txbNewToDo');
         var body = txt.value;
@@ -217,11 +213,9 @@ addBtn.addEventListener("click", function(){
         data['description'] = body;
 
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        console.log(JSON.stringify(data));
         xhr.addEventListener("load", updateList);
         /*Do not allow user to add empty value*/
         if(body != ""){
-        console.log(body);
              xhr.send(JSON.stringify(data));
         }
         /*Clears the input box of previous task.*/
@@ -237,7 +231,7 @@ inputTextBox.addEventListener("keyup", function(){
 
     if (event.keyCode === 13) {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "createTask");
+        xhr.open("POST", "tasks/");
         /*Preparing request body */
 
         var body = this.value;
@@ -245,11 +239,9 @@ inputTextBox.addEventListener("keyup", function(){
         data['description'] = body;
 
         xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-        console.log(JSON.stringify(data));
         xhr.addEventListener("load", updateList);
         /*Do not allow user to add empty value*/
         if(body != ""){
-        console.log(body);
              xhr.send(JSON.stringify(data));
         }
         /*Clears the input box of previous task.*/
