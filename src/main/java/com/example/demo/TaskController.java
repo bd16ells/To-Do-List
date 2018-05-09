@@ -18,12 +18,12 @@ public class TaskController {
         return taskService.findAll();
     }
 
-    @PostMapping("/createTask")
+    @PostMapping("/tasks")
     public Task createTask(@RequestBody Task task){
         return taskService.save(task);
 
     }
-    @PutMapping("/updateTask/{id}")
+    @PutMapping("/tasks/{id}")
     public ResponseEntity<Task> updateTask(@PathVariable("id") Optional<Task> current,
                            @RequestBody Task incoming){
 
@@ -34,7 +34,7 @@ public class TaskController {
         else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping("/completeTask/{id}")
+    @PutMapping("/tasks/complete/{id}")
     public ResponseEntity completeTask(@PathVariable("id") Optional<Task> task){
         if(task.isPresent()){
 
@@ -44,7 +44,7 @@ public class TaskController {
 
     }
 
-    @DeleteMapping("/deleteTask/{id}")
+    @DeleteMapping("/tasks/{id}")
     public ResponseEntity deleteTask(@PathVariable("id") Optional<Task> task){
         if(task.isPresent()){
             taskService.delete(task.get());
