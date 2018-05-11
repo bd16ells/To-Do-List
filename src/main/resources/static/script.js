@@ -31,7 +31,6 @@ while (list.firstChild) {
 /*Receive request body*/
     var data = this.response;
     var dataArray = JSON.parse(data);
-
 /*Iterate through each task and append it to the list.*/
     for(var i = 0; i < dataArray.length; i++){
         var listItem = document.createElement("li");
@@ -49,7 +48,7 @@ while (list.firstChild) {
         listItem.appendChild(check);
 
 
-
+/*Event listener for marking a task complete*/
             check.addEventListener("click", function(){
                 var xhr = new XMLHttpRequest();
                 var id = this.parentElement.id;
@@ -61,7 +60,8 @@ while (list.firstChild) {
 
         });
 
-
+/*Place text in a span so a user is also able to click on
+text to mark a task as complete*/
         var textBox = document.createElement("span");
         textBox.textContent = dataArray[i]['description'];
         textBox.setAttribute('class', "listText");
@@ -140,7 +140,11 @@ while (list.firstChild) {
                         event.preventDefault();
                         this.contentEditable = "false";
         /*Get new content and append into AJAX request*/
-                        var txt = this.childNodes[0].textContent;
+                        var txt = this.innerHTML;
+        /*Sometimes the "enter" press adds a br, even though preventDefault is the first
+        statement. */
+                        txt = txt.replace("<br>", "");
+
 
                         document.getElementById("txbNewToDo").focus();
                         var data = {};
@@ -168,7 +172,7 @@ while (list.firstChild) {
                     event.preventDefault();
                     this.contentEditable = "false";
                     /*Get new content and append into AJAX request*/
-                    var txt = this.childNodes[0].textContent;
+                    var txt = this.textContent;
 
                     document.getElementById("txbNewToDo").focus();
                     var data = {};
