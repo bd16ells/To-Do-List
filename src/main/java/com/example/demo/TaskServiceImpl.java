@@ -45,7 +45,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     public Task toggleComplete(Task task){
-        taskRepository.delete(task);
+        //taskRepository.delete(task);
         Task newTask = new Task();
         newTask.setCompleted(task.isCompleted());
         newTask.toggleCompleteness();
